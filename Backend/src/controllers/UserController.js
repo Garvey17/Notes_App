@@ -60,24 +60,24 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const getUserDetails = async (req, res) => {
-  try {
-    const token = req.cookies.token;
-    if (!token) {
-      return res.status(401).json({ message: "Token missing" });
-    }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded);
+// export const getUserDetails = async (req, res) => {
+//   try {
+//     const token = req.cookies.token;
+//     if (!token) {
+//       return res.status(401).json({ message: "Token missing" });
+//     }
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//     console.log(decoded);
     
-    const user = await User.findOne({_id:decoded.userID});
-    if (!user) {
-      res.status(404).json({ message: "User Not Found" });
-    }
-    res.status(200).json(user);
-  } catch (error) {
-    return res.status(500).json({ message: "Server error", error });
-  }
-};
+//     const user = await User.findOne({_id:decoded.userID});
+//     if (!user) {
+//       res.status(404).json({ message: "User Not Found" });
+//     }
+//     res.status(200).json(user);
+//   } catch (error) {
+//     return res.status(500).json({ message: "Server error", error });
+//   }
+// };
 
 export const logout=async(req,res)=>{
     try {

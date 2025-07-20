@@ -3,6 +3,7 @@ import {NoteContext} from "../contexts/NoteContexts"
 import { useTheme } from "../contexts/ThemeContext";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import api from "../lib/axios";
 
 const NotesApp = () => {
   const [newNote, setNewNote] = useState("");
@@ -50,7 +51,7 @@ const NotesApp = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:3001/api/auth/logout', {}, {
+      await api.post('/auth/logout', {}, {
         withCredentials: true,
       });
       navigate('/login');

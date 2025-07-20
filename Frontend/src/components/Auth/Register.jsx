@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { Eye,  EyeClosed } from 'lucide-react';
+import api from '../../lib/axios.js';
 
 const Register = () => {
     const {
@@ -28,7 +29,7 @@ const Register = () => {
     try {
       console.log('Registration form submitted', data);
 
-      const response = await axios.post('http://localhost:3001/api/auth/register', data);
+      const response = await api.post('/auth/register', data);
 
       if (response.status === 201) {
         alert('Registration successful!');

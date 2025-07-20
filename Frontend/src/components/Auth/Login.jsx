@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { Eye,  EyeClosed } from 'lucide-react';
+import api from '../../lib/axios.js';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
   try {
-    const response = await axios.post('http://localhost:3001/api/auth/login', data, {
+    const response = await api.post('/auth/login', data, {
       withCredentials: true, // to send and receive cookies
     });
 
